@@ -1,6 +1,7 @@
 # ESW Egarden - An Effort for Hydroponics to be Automated with a Raspberry-Pi
 
 import ConfigParser
+import RPi.GPIO as GPIO
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
@@ -21,12 +22,12 @@ def ConfigSectionMap(section):
 numSystems = len(Config.sections())
 
 for i in range(numSystems):
-	print "Looking at System %d" % (i + 1)
-	sectionString = 'System' + str(i + 1);
-	try:
-		pinNumber = Config.get(sectionString,'PumpPin')
-		print "Pin Number Assigned is: %d" % (int(pinNumber)) #TO Fix
-	except:
-		print 'Bad Naming of Sections in Config File, Continuing Haphazardly'
+    print "Looking at System %d" % (i + 1)
+    sectionString = 'System' + str(i + 1);
+    try:
+        pinNumber = Config.get(sectionString,'PumpPin')
+        print "Pin Number Assigned is: %d" % (int(pinNumber)) #TO Fix
+    except:
+        print 'Bad Naming of Sections in Config File, Continuing Haphazardly'
 
 
