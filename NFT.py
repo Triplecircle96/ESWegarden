@@ -6,4 +6,7 @@ class NFT:
         self.SensorPin = sensorPin
 
     def instantiateSystem(self):
-        
+        # Turn on the Motor
+
+        # Instantiate Sensor
+
