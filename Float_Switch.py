@@ -1,1 +1,1 @@
-class Float_Switch(Base_Sensor)
+class Float_Switch(Base_Sensor):
