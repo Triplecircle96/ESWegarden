@@ -19,3 +19,12 @@ Hardware Used:
 - Float Switches for Water Detection
 
 Code created to work with a Raspberry Pi.
+
+Functionality:
+	- Monitors systems and system settings
+	- Alerts users when system needs maintanence
+	- Logging Data for Later Review
+
+
+Future Goals: 
+	- Implementing a UI to interact with system remotely
