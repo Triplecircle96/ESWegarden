@@ -11,7 +11,7 @@ class NFT(system):
         self.alive = True
         # Setup GPIO Pin Mode
         GPIO.setup(self.motorPin, GPIO.OUT)
-        self.sensor = Float_Switch()
+        self.sensor = Float_Switch(self.SensorPin)
 
     def runSystem(self):
         if self.alive:
