@@ -1,6 +1,7 @@
 # ESW Egarden - An Effort for Hydroponics to be Automated with a Raspberry-Pi
 
 import ConfigParser
+import threading
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
@@ -38,6 +39,8 @@ for i in range(numSystems):
     except:
         print 'Bad Naming of Sections in Config File, Continuing Haphazardly'
 
+
+    systemThreads = []
     # Starting the systems based of System Type
     if (type == 'NFT'):
         print 'Creating NFT System'

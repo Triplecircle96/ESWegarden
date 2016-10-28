@@ -1,6 +1,7 @@
 from abc import ABCMeta, abstractmethod
+import threading
 
-class System:
+class system:
     __metaclass__ = ABCMeta
 
     @abstractmethod
@@ -14,3 +15,7 @@ class System:
     @abstractmethod
     def diagnostic(self):
         raise NotImplementedError()
+
+    def systemRun(self):
+        t=threading.Thread(target=instantiateSystem)
+        t.start()
