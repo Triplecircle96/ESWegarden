@@ -5,10 +5,11 @@ from threading import Timer
 from eGardenPackage.systemSensors import *
 
 class drip(system):
-    def __init__(self, motorPin, sensorPin, onTime):
+    def __init__(self, motorPin, sensorPin, onTime, offTime):
         self.motorPin = motorPin
         self.SensorPin = sensorPin
         self.onTime = onTime
+        self.offTime = offTime
         self.startTime = datetime.datetime.now().time().isoformat()
         self.alive = True
         # Variables for Timer
@@ -28,8 +29,8 @@ class drip(system):
         # Timer Function to Turn Off
         if not self.is_running:
             self.is_running = True
-            self._timer = Timer(self.offTime, self.reactivateSystem())
-            self.sensor.event1.wait(self.offTime)
+            self._timer = Timer(self.onTime, self.reactivateSystem())
+            self.sensor.event1.wait(self.onTime)
             if self.sensor.event1.isSet():
                 self.deactivateSystem()
 
@@ -38,10 +39,10 @@ class drip(system):
         self.alive = True
         # Timer Function
         if self.is_running:
-            self.is_running = False;
-            self._timer = Timer(self.onTime, self.runSystem())
+            self.is_running = False
+            self._timer = Timer(self.offTime, self.runSystem())
             self._timer.start()
-            self.sensor.event1.wait(onTime)
+            self.sensor.event1.wait(self.ofTime)
             if self.sensor.event1.isSet():
                 self.deactivateSystem()
 
