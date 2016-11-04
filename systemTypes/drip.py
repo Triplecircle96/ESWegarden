@@ -3,10 +3,11 @@ import datetime
 import threading
 from eGardenPackage.systemSensors import *
 
-class NFT(system):
-    def __init__(self, motorPin, sensorPin):
+class drip(system):
+    def __init__(self, motorPin, sensorPin, onTime):
         self.motorPin = motorPin
         self.SensorPin = sensorPin
+        self.onTime = onTime
         self.startTime = datetime.datetime.now().time().isoformat()
         self.alive = True
         # Setup GPIO Pin Mode
