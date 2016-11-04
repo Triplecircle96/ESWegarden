@@ -61,10 +61,10 @@ for i in range(numSystems):
         print 'Creating EbbNFlow System'
         try:
             onTime = Config.get(sectionString, 'onTime')
-            print "System will be On This Much Time per Hour (minutes): %d" % (int(onTime))  # TO Fix
+            print "System will be Off This Much Time per Hour (minutes): %d" % (int(offTime))  # TO Fix
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
-        # x = EbbNFlow(pumpPin, waterLevelPin, onTime)
+        # x = ebbnflow(pumpPin, waterLevelPin, offTime)
         # systemThreads.append(x)
     else:
         print 'System type did not Match known types. Check Spelling of System Type'
