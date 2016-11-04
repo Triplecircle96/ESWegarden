@@ -42,7 +42,7 @@ class drip(system):
             self.is_running = False
             self._timer = Timer(self.offTime, self.runSystem())
             self._timer.start()
-            self.sensor.event1.wait(self.ofTime)
+            self.sensor.event1.wait(self.offTime)
             if self.sensor.event1.isSet():
                 self.deactivateSystem()
 
