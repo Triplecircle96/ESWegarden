@@ -1,9 +1,9 @@
 import RPi.GPIO as GPIO
 import datetime
 import threading
-from eGardenPackage.systemSensors import *
+import eGardenPackage.*
 
-class NFT(system):
+class drip(system):
     def __init__(self, motorPin, sensorPin):
         self.motorPin = motorPin
         self.SensorPin = sensorPin
