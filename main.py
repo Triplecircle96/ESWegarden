@@ -1,3 +1,4 @@
+# Alan Hesu
 # ESW Egarden - An Effort for Hydroponics to be Automated with a Raspberry-Pi
 
 import ConfigParser
