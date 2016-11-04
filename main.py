@@ -2,6 +2,7 @@
 
 import ConfigParser
 import threading
+import __init__
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')

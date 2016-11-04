@@ -1,12 +1,2 @@
-eGardenPackage/
-    __init__.py
-    systemSensors/
-        __init__.py
-        Base_Sensor.py
-        Float_Switch.py
 
-    systemTypes/
-        __init__.py
-        nft.py
-        drip.py
-        system.py
+__all__ = ["systemSensors.__init__", "systemSensors.Base_Sensor", "systemSensors.Float_Switch", "systemTypes.__init__", "systemTypes.nft", "systemTypes.drip", "systemTypes.system"]
