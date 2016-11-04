@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 
 class Float_Switch(Base_Sensor):
     def __init__(self, sensorPinIn):
-        self.sensorPin = sensorPinIn
+        super().__init__(sensorPinIn)
         GPIO.setup(self.sensorPin, GPIO.IN, pull_up_down=GPIO.PUD)
 
     def waterLevelLow(self):
