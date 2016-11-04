@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import datetime
 import threading
-import eGardenPackage.*
+from eGardenPackage.systemSensors import *
 
 class ebbnflow(system):
     def __init__(self, motorPin, sensorPin):
