@@ -17,10 +17,10 @@ class NFT(system):
         while True:
             if not self.sensor.event1.isSet():
                 self.sensor.event1.wait()
-                deactivateSystem()
+                self.deactivateSystem()
             else:
                 self.sensor.event2.wait()
-                reactivateSystem()
+                self.reactivateSystem()
 
     def runSystem(self):
         if self.alive:
