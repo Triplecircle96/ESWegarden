@@ -18,29 +18,41 @@ class drip(system):
         GPIO.setup(self.motorPin, GPIO.OUT)
         self.sensor = Float_Switch(self.SensorPin)
 
+    def instantiateSystem(self):
+        runSystem()
+
     def runSystem(self):
-            # Turn on the Motor
-            GPIO.output(self.motorPin,1)
-            # Instantiate Sensor
-
-            # Timer Function to Turn Off
-            if self.is_running:
-
+        # Turn on the Motor
+        GPIO.output(self.motorPin, 1)
+        
+        # Timer Function to Turn Off
+        if not self.is_running:
+            self.is_running = True
+            self._timer = Timer(self.offTime, reactivateSystem)
+            self.sensor.event1.wait(onTime)
+            if sensor.event1.isSet():
+                deactivateSystem()
 
     def reactivateSystem(self):
-        # Turn On Motor
+        GPIO.output(self.motorPin, 0)
         self.alive = True
-        self.runSystem()
         # Timer Function
-        if not self.is_running:
-                self._timer = Timer(self.onTime,runSystem)
-                self._timer.start()
-                self.is_running = True;
+        if self.is_running:
+            self.is_running = False;
+            self._timer = Timer(self.onTime, runSystem)
+            self._timer.start()
+            self.sensor.event1.wait(onTime)
+            if sensor.event1.isSet():
+                deactivateSystem()
 
     def deactivateSystem(self):
         # Turn Off Motor
+        self.alive = False
         GPIO.output(self.motorPin, 0)
         self.is_running = False
+        self._timer.cancel()
+        self.sensor.event2.wait()
+        reactivateSystem()
 
     def diagnostic(self):
         # Prints system information for user
