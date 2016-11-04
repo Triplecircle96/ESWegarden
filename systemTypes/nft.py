@@ -13,6 +13,15 @@ class NFT(system):
         GPIO.setup(self.motorPin, GPIO.OUT)
         self.sensor = Float_Switch(self.SensorPin)
 
+    def initializeSystem(self):
+        while True:
+            if not this.sensor.event1.isSet():
+                this.sensor.event1.wait()
+                deactivateSystem()
+            else:
+                this.sensor.event2.wait()
+                reactivateSystem()
+
     def runSystem(self):
         if self.alive:
             # Turn on the Motor

@@ -7,9 +7,14 @@ class Float_Switch(Base_Sensor):
 
     def waterLevelLow(self):
         # Send Turn off Command
+        this.event1.set()
+        this.event2.clear()
+        # event1 is falling water and event2 is rising
 
     def waterLevelHigh(self):
         # Send Turn on Command
+        this.event1.clear()
+        this.event2.set()
 
     GPIO.add_event_detect(self.sensorPin, GPIO.FALLING, callback=waterLevelHigh, bouncetime=50)
 

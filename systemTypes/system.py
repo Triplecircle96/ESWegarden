@@ -9,6 +9,10 @@ class system:
         raise NotImplementedError()
 
     @abstractmethod
+    def reactivateSystem(self):
+        raise NotImplementedError()
+
+    @abstractmethod
     def deactivateSystem(self):
         raise NotImplementedError()
 

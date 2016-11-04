@@ -7,8 +7,12 @@ class Base_Sensor:
 
     def __init__(self, portnum):
         self.port = portnum
-        self.value = 0
-        self.event = threading.Event()
+        # self.value = 0
+        self.event1 = threading.Event()
+        self.event2 = threading.Event()
+        # event2 used to block opposite of event1
+        self.event1.set()
+        # implicit self.event2.clear()
 
     def read_data(self):
         raise NotImplementedError()
