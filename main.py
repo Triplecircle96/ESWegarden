@@ -45,7 +45,7 @@ for i in range(numSystems):
     if (type == 'NFT'):
         print 'Creating NFT System'
         # x = NFT(pumpPin,waterLevelPin)
-        # systems.append(x)
+        # systemThreads.append(x)
     elif (type == 'Drip'):
         # Drip System has unique parameters for it, so parsing for the more information
         print 'Creating Drip System'
@@ -55,7 +55,7 @@ for i in range(numSystems):
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
         # x = Drip(pumpPin, waterLevelPin, onTime)
-        # systems.append(x)
+        # systemThreads.append(x)
     elif type == 'EbbNFlow':
         # EbbNFlow System has unique parameters for it, so parsing for the more information
         print 'Creating EbbNFlow System'
@@ -65,7 +65,7 @@ for i in range(numSystems):
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
         # x = EbbNFlow(pumpPin, waterLevelPin, onTime)
-        # systems.append(x)
+        # systemThreads.append(x)
     else:
         print 'System type did not Match known types. Check Spelling of System Type'
 
