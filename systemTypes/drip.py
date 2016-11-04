@@ -1,12 +1,13 @@
 import RPi.GPIO as GPIO
 import datetime
 import threading
-import eGardenPackage.*
+from eGardenPackage.systemSensors import *
 
 class drip(system):
-    def __init__(self, motorPin, sensorPin):
+    def __init__(self, motorPin, sensorPin, onTime):
         self.motorPin = motorPin
         self.SensorPin = sensorPin
+        self.onTime = onTime
         self.startTime = datetime.datetime.now().time().isoformat()
         self.alive = True
         # Setup GPIO Pin Mode
