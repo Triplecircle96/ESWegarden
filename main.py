@@ -2,6 +2,7 @@
 
 import ConfigParser
 import threading
+from systemTypes import nft
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
@@ -30,12 +31,12 @@ for i in range(numSystems):
     try:
         type = Config.get(sectionString,'Type')
         print "System Type is: %s" % (type)  # TO Fix
-        status = Config.get(sectionString, 'Status')
-        print "System Status is: %d" % (status) #TO Fix
-        pumpPin = Config.get(sectionString, 'PumpPin')
-        print "System Pump Pin is: %d" % (int(pumpPin))  # TO Fix
-        waterLevelPin = Config.get(sectionString, 'WaterLevelPin')
-        print "System Water Level Detection Pin is: %d" % (int(waterLevelPin))  # TO Fix
+        status = Config.get(sectionString,'Status')
+        print "System Status is: %r" % (status) #TO Fix
+        pumpPin = int(Config.get(sectionString, 'PumpPin'))
+        print "System Pump Pin is: %d" % (pumpPin)  # TO Fix
+        waterLevelPin = int(Config.get(sectionString, 'WaterLevelPin'))
+        print "System Water Level Detection Pin is: %d" % (waterLevelPin)  # TO Fix
     except:
         print 'Bad Naming of Sections in Config File, Continuing Haphazardly'
 
@@ -44,8 +45,8 @@ for i in range(numSystems):
     # Starting the systems based of System Type
     if (type == 'NFT'):
         print 'Creating NFT System'
-        # x = NFT(pumpPin,waterLevelPin)
-        # systemThreads.append(x)
+        x = nft.NFT(pumpPin,waterLevelPin)
+        systemThreads.append(x)
     elif (type == 'Drip'):
         # Drip System has unique parameters for it, so parsing for the more information
         print 'Creating Drip System'

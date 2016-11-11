@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 import threading
 
-class system:
+class system(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod

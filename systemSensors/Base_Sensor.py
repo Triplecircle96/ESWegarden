@@ -3,7 +3,7 @@ import threading
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
-class Base_Sensor:
+class Base_Sensor(object):
 
     def __init__(self, portnum):
         self.port = portnum

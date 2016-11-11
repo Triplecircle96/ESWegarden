@@ -1,9 +1,10 @@
 import RPi.GPIO as GPIO
 import datetime
 import threading
-from eGardenPackage.systemSensors import *
+from systemSensors import Float_Switch
+import system
 
-class NFT(system):
+class NFT(system.system):
     def __init__(self, motorPin, sensorPin):
         self.debug = True
         self.motorPin = motorPin
@@ -11,14 +12,15 @@ class NFT(system):
         self.startTime = datetime.datetime.now().time().isoformat()
         self.alive = True
         # Setup GPIO Pin Mode
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.motorPin, GPIO.OUT)
-        self.sensor = Float_Switch(self.SensorPin)
+        self.sensor = Float_Switch.Float_Switch(self.SensorPin)
         if (self.debug):
             print("Creating NFT Object")
 
-    def initializeSystem(self):
+    def instantiateSystem(self):
         if (self.debug):
-            print("Initializeing NFT System")
+            print("Instantiating NFT System")
         while True:
             if not self.sensor.event1.isSet():
                 self.sensor.event1.wait()
