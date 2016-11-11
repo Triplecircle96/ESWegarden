@@ -1,0 +1,20 @@
+[System1]
+Type:NFT
+Status: False
+PumpPin: 14
+WaterLevelPin: 16
+onTime: N/A
+
+[System2]
+Type: Drip
+Status: False
+PumpPin: 12
+WaterLevelPin: 13
+onTime: 5
+
+[System3]
+Type: EbbNFlow
+Status: False
+PumpPin:
+WaterLevelPin:
+offTime:

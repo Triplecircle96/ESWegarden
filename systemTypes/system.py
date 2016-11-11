@@ -21,5 +21,5 @@ class system:
         raise NotImplementedError()
 
     def systemRun(self):
-        t=threading.Thread(target=instantiateSystem)
+        t = threading.Thread(target=instantiateSystem())
         t.start()
