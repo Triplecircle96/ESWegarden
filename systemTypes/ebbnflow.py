@@ -29,13 +29,13 @@ class ebbnflow(system):
         # Timer Function to Turn Off
         if not self.is_running:
             self.is_running = True
-            self._timer = Timer(self.onTime, self.reactivateSystem())
+            self._timer = Timer(self.onTime, self.waitSystem())
             self._timer.start()
             self.sensor.event2.wait(self.onTime)
             if self.sensor.event2.isSet():
-                self.reactivateSystem()
+                self.waitSystem()
 
-    def reactivateSystem(self):
+    def waitSystem(self):
         GPIO.output(self.motorPin, 0)
         self.alive = True
         # Timer Function
@@ -43,9 +43,9 @@ class ebbnflow(system):
             self.is_running = False
             self._timer = Timer(self.offTime, self.runSystem())
             self._timer.start()
-            self.sensor.event2.wait(self.offTime)
-            if self.sensor.event2.isSet():
-                self.reactivateSystem()
+            self.sensor.event1.wait(self.offTime)
+            if self.sensor.event1.isSet():
+                self.waitSystem()
 
     def deactivateSystem(self):
         # Turn Off Motor
@@ -54,7 +54,7 @@ class ebbnflow(system):
         self.is_running = False
         self._timer.cancel()
         self.sensor.event1.wait()
-        self.reactivateSystem()
+        self.waitSystem()
 
     def diagnostic(self):
         # Prints system information for user
