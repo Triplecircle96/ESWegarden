@@ -5,6 +5,7 @@ from eGardenPackage.systemSensors import *
 
 class NFT(system):
     def __init__(self, motorPin, sensorPin):
+        self.debug = True
         self.motorPin = motorPin
         self.SensorPin = sensorPin
         self.startTime = datetime.datetime.now().time().isoformat()
@@ -12,8 +13,12 @@ class NFT(system):
         # Setup GPIO Pin Mode
         GPIO.setup(self.motorPin, GPIO.OUT)
         self.sensor = Float_Switch(self.SensorPin)
+        if (self.debug):
+            print("Creating NFT Object")
 
     def initializeSystem(self):
+        if (self.debug):
+            print("Initializeing NFT System")
         while True:
             if not self.sensor.event1.isSet():
                 self.sensor.event1.wait()
@@ -23,19 +28,29 @@ class NFT(system):
                 self.reactivateSystem()
 
     def runSystem(self):
+        if (self.debug):
+            print("Running NFT System")
         if self.alive:
             # Turn on the Motor
             GPIO.output(self.motorPin,1)
+            if (self.debug):
+                print("Running NFT System : Turning ON Motor")
             # Instantiate Sensor
         else:
             GPIO.output(self.motorPin,0)
+            if (self.debug):
+                print("Running NFT System : Turning OFF Motor")
 
     def reactivateSystem(self):
+        if (self.debug):
+            print("Reactivating system : Turning ON Motor")
         # Turn On Motor
         self.alive = True
         self.runSystem()
 
     def deactivateSystem(self):
+        if (self.debug):
+            print("Deactivating system : Turning OFF Motor")
         # Turn Off Motor
         self.alive = False
         self.runSystem()
