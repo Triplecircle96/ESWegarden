@@ -45,7 +45,7 @@ class ebbnflow(system):
             self._timer.start()
             self.sensor.event1.wait(self.offTime)
             if self.sensor.event1.isSet():
-                self.waitSystem()
+                self.runSystem()
 
     def deactivateSystem(self):
         # Turn Off Motor
