@@ -62,9 +62,3 @@ class NFT(system.system):
         print 'Time Started: ' + self.startTime + '\n'
         print 'Motor Pin Used: ' + self.motorPin + '\n'
         print 'Water Level Pin Used: ' + self.SensorPin + '\n'
-
-
-
-
-
-
