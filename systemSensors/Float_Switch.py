@@ -5,7 +5,7 @@ class Float_Switch(Base_Sensor.Base_Sensor):
     def __init__(self, sensorPinIn):
         super(Float_Switch, self).__init__(sensorPinIn)
         GPIO.setup(self.port, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        GPIO.add_event_detect(self.port, GPIO.FALLING, callback=Float_Switch.waterLevelHigh, bouncetime=50)
+        GPIO.add_event_detect(self.port, GPIO.FALLING, callback=self.waterLevelHigh, bouncetime=50)
 		
     def waterLevelLow(self, pin = 0):
         # Send Turn off Command

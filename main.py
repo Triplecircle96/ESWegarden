@@ -69,4 +69,8 @@ for i in range(numSystems):
         # systemThreads.append(x)
     else:
         print 'System type did not Match known types. Check Spelling of System Type'
+        
+    if len(systemThreads) > 0:
+		for t in systemThreads:
+			t.systemRun()
 
