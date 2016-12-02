@@ -1,4 +1,4 @@
-SLACK_BOT_TOKEN = 'xoxb-111989275299-COfyPYcOgPWzkmWiGUR3meTu'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-oUMmBiNgFTsfxg34GKtMQJ4E'
 
 import os
 from slackclient import SlackClient
