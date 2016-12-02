@@ -7,7 +7,7 @@ class slack:
         print("Starting to Create Slack Bot")
         # ESW Slackbot's ID Values
         self.BOT_ID = 'U39V3838T'
-        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-TC0QD7cfqaOBWunvexHqLt3u'
+        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-kG77uNYsrHXVH1TLbTSgSDEO'
 
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
