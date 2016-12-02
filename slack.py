@@ -1,4 +1,5 @@
 import time
+import threading
 from slackclient import SlackClient
 
 class slack:
@@ -14,6 +15,10 @@ class slack:
 
         # instantiate Slack Client
         self.slack_client = SlackClient(self.SLACK_BOT_TOKEN)
+
+        l = threading.Thread(target=self.instantiateSlack)
+        l.start()
+
 
     def handle_command(command, channel, self):
         """
