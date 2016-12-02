@@ -2,25 +2,14 @@
 
 import ConfigParser
 import threading
+from slack import slack
 from systemTypes import nft
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
 systems = []
 
-# # Method that parses through config file
-# def ConfigSectionMap(section):
-#     dict1 = {}
-#     options = Config.options(section)
-#     for option in options:
-#         try:
-#             dict1[option] = Config.get(section, option)
-#             if dict1[option] == -1:
-#                 DebugPrint("skip: %s" % option)
-#         except:
-#             print("exception on %s!" % option)
-#             dict1[option] = None
-#     return dict1
+slackIntegration = slack()
 
 numSystems = len(Config.sections())
 
