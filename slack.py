@@ -6,7 +6,7 @@ class slack:
     def __init__(self):
         # ESW Slackbot's ID Values
         self.BOT_ID = 'U39V3838T'
-        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-oUMmBiNgFTsfxg34GKtMQJ4E'
+        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-TC0QD7cfqaOBWunvexHqLt3u'
 
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
