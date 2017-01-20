@@ -21,6 +21,7 @@ class NFT(system.system):
     def instantiateSystem(self):
         if (self.debug):
             print("Instantiating NFT System")
+        self.runSystem()
         while True:
             if not self.sensor.event1.isSet():
                 self.sensor.event1.wait()

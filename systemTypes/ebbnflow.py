@@ -17,7 +17,7 @@ class ebbnflow(system):
         self.is_running = False
         # Setup GPIO Pin Mode
         GPIO.setup(self.motorPin, GPIO.OUT)
-        self.sensor = Float_Switch(self.SensorPin)
+        self.sensor = Float_Switch.Float_Switch(self.SensorPin)
 
     def instantiateSystem(self):
         self.runSystem()
