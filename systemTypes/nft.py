@@ -23,6 +23,8 @@ class NFT(system.system):
     def instantiateSystem(self):
         if (self.debug):
             print("Instantiating NFT System")
+            GPIO.output(self.motorPin, 1)
+            GPIO.output(self.motorPin, 0)
         self.runSystem()
         while True:
             if not self.sensor.event1.isSet():
