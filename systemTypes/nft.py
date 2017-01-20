@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import datetime
+import time
 import threading
 from systemSensors import Float_Switch
 import system
@@ -18,10 +19,12 @@ class NFT(system.system):
         if (self.debug):
             print("Creating NFT Object")
 
+
     def instantiateSystem(self):
         if (self.debug):
             print("Instantiating NFT System")
         self.runSystem()
+        time.delay(1000)
         while True:
             if not self.sensor.event1.isSet():
                 self.sensor.event1.wait()
