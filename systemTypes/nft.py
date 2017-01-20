@@ -48,14 +48,14 @@ class NFT(system.system):
 
     def reactivateSystem(self):
         if (self.debug):
-            print("Reactivating system : Turning ON Motor")
+            print("Reactivating system : Sending runSystem Command")
         # Turn On Motor
         self.alive = True
         self.runSystem()
 
     def deactivateSystem(self):
         if (self.debug):
-            print("Deactivating system : Turning OFF Motor")
+            print("Deactivating system : Sending runSystem Command")
         # Turn Off Motor
         self.alive = False
         self.runSystem()
