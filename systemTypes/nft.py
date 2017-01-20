@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import datetime
+import time
 import threading
 from systemSensors import Float_Switch
 import system
@@ -17,6 +18,7 @@ class NFT(system.system):
         self.sensor = Float_Switch.Float_Switch(self.SensorPin)
         if (self.debug):
             print("Creating NFT Object")
+
 
     def instantiateSystem(self):
         if (self.debug):
@@ -46,14 +48,14 @@ class NFT(system.system):
 
     def reactivateSystem(self):
         if (self.debug):
-            print("Reactivating system : Turning ON Motor")
+            print("Reactivating system : Sending runSystem Command")
         # Turn On Motor
         self.alive = True
         self.runSystem()
 
     def deactivateSystem(self):
         if (self.debug):
-            print("Deactivating system : Turning OFF Motor")
+            print("Deactivating system : Sending runSystem Command")
         # Turn Off Motor
         self.alive = False
         self.runSystem()
