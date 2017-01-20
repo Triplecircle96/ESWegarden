@@ -12,8 +12,6 @@ class ebbnflow(system):
         self.alive = True
         self.onTime = onTime
         self.offTime = offTime
-        # Variables for timer
-        self._timer = None
         self.is_running = False
         # Setup GPIO Pin Mode
         GPIO.setup(self.motorPin, GPIO.OUT)
@@ -25,26 +23,23 @@ class ebbnflow(system):
     def runSystem(self):
         # Turn on the Motor
         GPIO.output(self.motorPin, 1)
-
-        # Timer Function to Turn Off
+        self.alive = True
+        # Timing code
         if not self.is_running:
             self.is_running = True
-            self._timer = Timer(self.onTime, self.waitSystem())
-            self._timer.start()
             self.sensor.event2.wait(self.onTime)
             if self.sensor.event2.isSet():
                 self.waitSystem()
 
     def waitSystem(self):
         GPIO.output(self.motorPin, 0)
-        self.alive = True
-        # Timer Function
+        # Timing code
         if self.is_running:
             self.is_running = False
-            self._timer = Timer(self.offTime, self.runSystem())
-            self._timer.start()
             self.sensor.event1.wait(self.offTime)
             if self.sensor.event1.isSet():
+                self.deactivateSystem()
+            else:
                 self.runSystem()
 
     def deactivateSystem(self):
@@ -52,9 +47,8 @@ class ebbnflow(system):
         self.alive = False
         GPIO.output(self.motorPin, 0)
         self.is_running = False
-        self._timer.cancel()
         self.sensor.event1.wait()
-        self.waitSystem()
+        self.runSystem()
 
     def diagnostic(self):
         # Prints system information for user
