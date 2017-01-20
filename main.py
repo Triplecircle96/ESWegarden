@@ -12,6 +12,7 @@ systems = []
 slackIntegration = slack()
 
 numSystems = len(Config.sections())
+systemThreads = []
 
 # Reading through the different systems that are in the Config.ini file
 for i in range(numSystems):
@@ -29,8 +30,6 @@ for i in range(numSystems):
     except:
         print 'Bad Naming of Sections in Config File, Continuing Haphazardly'
 
-
-    systemThreads = []
     # Starting the systems based of System Type
     if (type == 'NFT'):
         print 'Creating NFT System'
@@ -59,7 +58,7 @@ for i in range(numSystems):
     else:
         print 'System type did not Match known types. Check Spelling of System Type'
         
-    if len(systemThreads) > 0:
-		for t in systemThreads:
-			t.systemRun()
+if len(systemThreads) > 0:
+    for t in systemThreads:
+        t.systemRun()
 
