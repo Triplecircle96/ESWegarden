@@ -4,13 +4,13 @@ from slackclient import SlackClient
 
 # starterbot's ID as an environment variable
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-H5paNDYL2FXDPgMu0ODDhek3'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-dVEkPRyawpyNWYamtKPA8mSa'
 
 # instantiate Slack & Twilio clients
 slack_client = SlackClient(SLACK_BOT_TOKEN)
 
 # Get Bot id
-BOT_ID = self.botIDfinder()
+BOT_ID = botIDfinder()
 
 # constants
 AT_BOT = "<@" + BOT_ID + ">"
