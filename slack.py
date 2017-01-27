@@ -1,16 +1,17 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-XF8mdgF7aOkubdrxe22wIhDt'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-9Lf1UQyDoEfU0VlbB04SNDWn'
 
 import time
 import threading
 from slackclient import SlackClient
 
-slack_client = SlackClient(SLACK_BOT_TOKEN)
-
 class slack:
     def __init__(self):
         print("Starting to Create Slack Bot")
         # ESW Slackbot's ID Values
+
+        # instantiate Slack Client
+        self.slack_client = SlackClient(SLACK_BOT_TOKEN)
 
         self.BOT_ID = self.botIDfinder()
         print type(self.BOT_ID)
@@ -23,14 +24,11 @@ class slack:
         self.AT_BOT = "<@" + self.BOT_ID + ">"
         self.EXAMPLE_COMMAND = "do"
 
-        # instantiate Slack Client
-        self.slack_client = SlackClient(self.SLACK_BOT_TOKEN)
-
         l = threading.Thread(target=self.instantiateSlack)
         l.start()
 
     def botIDfinder(self):
-        api_call = slack_client.api_call("users.list")
+        api_call = self.slack_client.api_call("users.list")
         if api_call.get('ok'):
             # retrieve all users so we can find our bot
             users = api_call.get('members')
