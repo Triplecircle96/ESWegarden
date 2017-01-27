@@ -1,5 +1,5 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-omfq3K5hefA0Hp76GiYnJkBI'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-H5paNDYL2FXDPgMu0ODDhek3'
 
 import time
 import threading
