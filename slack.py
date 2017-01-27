@@ -13,6 +13,9 @@ class slack:
         # ESW Slackbot's ID Values
 
         self.BOT_ID = self.botIDfinder()
+        print type(self.BOT_ID)
+        print('bot id for debug')
+        print self.BOT_ID
         # self.BOT_ID = 'U39V3838T'
         self.SLACK_BOT_TOKEN = 'xoxb-111989275299-h3J8ZCGYsAWIGT0lnYIk3O9Z'
 
