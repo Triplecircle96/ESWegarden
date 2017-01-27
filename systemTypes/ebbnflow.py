@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import datetime
 import threading
-from eGardenPackage.systemSensors import *
+from systemSensors import Float_Switch
 
 class ebbnflow(system):
     def __init__(self, motorPin, sensorPin, onTime, offTime):
