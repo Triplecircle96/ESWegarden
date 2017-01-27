@@ -4,6 +4,7 @@ import ConfigParser
 import threading
 from slack import slack
 from systemTypes import nft
+from systemTypes import ebbnflow
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
