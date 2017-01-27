@@ -2,8 +2,9 @@ import RPi.GPIO as GPIO
 import datetime
 import threading
 from systemSensors import Float_Switch
+import system
 
-class ebbnflow(system):
+class ebbnflow(system.system):
     def __init__(self, motorPin, sensorPin, onTime, offTime):
         self.motorPin = motorPin
         self.SensorPin = sensorPin
