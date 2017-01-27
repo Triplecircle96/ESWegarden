@@ -1,16 +1,17 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-XF8mdgF7aOkubdrxe22wIhDt'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-H5paNDYL2FXDPgMu0ODDhek3'
 
 import time
 import threading
 from slackclient import SlackClient
 
-slack_client = SlackClient(SLACK_BOT_TOKEN)
-
 class slack:
     def __init__(self):
         print("Starting to Create Slack Bot")
         # ESW Slackbot's ID Values
+
+        # instantiate Slack Client
+        self.slack_client = SlackClient(SLACK_BOT_TOKEN)
 
         self.BOT_ID = self.botIDfinder()
         print type(self.BOT_ID)
@@ -23,14 +24,11 @@ class slack:
         self.AT_BOT = "<@" + self.BOT_ID + ">"
         self.EXAMPLE_COMMAND = "do"
 
-        # instantiate Slack Client
-        self.slack_client = SlackClient(self.SLACK_BOT_TOKEN)
-
         l = threading.Thread(target=self.instantiateSlack)
         l.start()
 
     def botIDfinder(self):
-        api_call = slack_client.api_call("users.list")
+        api_call = self.slack_client.api_call("users.list")
         if api_call.get('ok'):
             # retrieve all users so we can find our bot
             users = api_call.get('members')
@@ -62,9 +60,9 @@ class slack:
             this parsing function returns None unless a message is
             directed at the Bot, based on its ID.
         """
-        output_list = slack_rtm_output
-        if output_list and len(output_list) > 0:
-            for output in output_list:
+        self.output_list = slack_rtm_output
+        if self.output_list and len(self.output_list) > 0:
+            for output in self.output_list:
                 if output and 'text' in output and self.AT_BOT in output['text']:
                     # return text after the @ mention, whitespace removed
                     return output['text'].split(self.AT_BOT)[1].strip().lower(), \

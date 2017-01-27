@@ -4,12 +4,13 @@ import ConfigParser
 import threading
 from slack import slack
 from systemTypes import nft
+from systemTypes import ebbnflow
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
 systems = []
 
-slackIntegration = slack()
+# slackIntegration = slack()
 
 numSystems = len(Config.sections())
 systemThreads = []
@@ -49,13 +50,13 @@ for i in range(numSystems):
         # EbbNFlow System has unique parameters for it, so parsing for the more information
         print 'Creating EbbNFlow System'
         try:
-            onTime = Config.get(sectionString, 'onTime')
+            onTime = float(Config.get(sectionString, 'onTime'))
             print "System will be Off This Much Time per Hour (minutes): %d" % (int(onTime))  # TO Fix
-            offTime = Config.get(sectionString, 'offTime')
+            offTime = float(Config.get(sectionString, 'offTime'))
             print "System will be Off This Much Time per Hour (minutes): %d" % (int(offTime))  # TO Fix
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
-        x = ebbnflow(pumpPin, waterLevelPin, onTime, offTime)
+        x = ebbnflow.ebbnflow(pumpPin, waterLevelPin, onTime, offTime)
         systemThreads.append(x)
     else:
         print 'System type did not Match known types. Check Spelling of System Type'

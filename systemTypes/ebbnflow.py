@@ -1,9 +1,11 @@
 import RPi.GPIO as GPIO
 import datetime
+import time
 import threading
-from eGardenPackage.systemSensors import *
+from systemSensors import Float_Switch
+import system
 
-class ebbnflow(system):
+class ebbnflow(system.system):
     def __init__(self, motorPin, sensorPin, onTime, offTime):
         self.motorPin = motorPin
         self.SensorPin = sensorPin
@@ -51,6 +53,9 @@ class ebbnflow(system):
         GPIO.output(self.motorPin, 0)
         self.is_running = False
         self.sensor.event2.wait()
+        self.runSystem()
+
+    def reactivateSystem(self):
         self.runSystem()
 
     def diagnostic(self):
