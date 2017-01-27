@@ -51,6 +51,9 @@ class ebbnflow(system.system):
         self.sensor.event1.wait()
         self.runSystem()
 
+    def reactivateSystem(self):
+        self.runSystem()
+
     def diagnostic(self):
         # Prints system information for user
         print 'Time Started: ' + self.startTime + '\n'
