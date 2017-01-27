@@ -3,7 +3,7 @@ SLACK_BOT_TOKEN = 'xoxb-111989275299-h3J8ZCGYsAWIGT0lnYIk3O9Z'
 import os
 from slackclient import SlackClient
 
-BOT_NAME = '@raspibot'
+BOT_NAME = 'raspibot'
 
 slack_client = SlackClient(SLACK_BOT_TOKEN)
 
