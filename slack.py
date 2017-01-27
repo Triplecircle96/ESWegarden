@@ -1,5 +1,5 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-h3J8ZCGYsAWIGT0lnYIk3O9Z'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-DBBR8aU72RKBujelg7PJZzzx'
 
 import time
 import threading
@@ -17,7 +17,7 @@ class slack:
         print('bot id for debug')
         print self.BOT_ID
         # self.BOT_ID = 'U39V3838T'
-        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-h3J8ZCGYsAWIGT0lnYIk3O9Z'
+        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-DBBR8aU72RKBujelg7PJZzzx'
 
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
