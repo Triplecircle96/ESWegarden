@@ -56,7 +56,7 @@ for i in range(numSystems):
             print "System will be Off This Much Time per Hour (minutes): %d" % (int(offTime))  # TO Fix
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
-        x = ebbnflow(pumpPin, waterLevelPin, onTime, offTime)
+        x = ebbnflow.ebbnflow(pumpPin, waterLevelPin, onTime, offTime)
         systemThreads.append(x)
     else:
         print 'System type did not Match known types. Check Spelling of System Type'
