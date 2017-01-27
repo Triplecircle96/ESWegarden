@@ -9,7 +9,7 @@ Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
 systems = []
 
-slackIntegration = slack()
+# slackIntegration = slack()
 
 numSystems = len(Config.sections())
 systemThreads = []
