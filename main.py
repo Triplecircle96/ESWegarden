@@ -50,9 +50,9 @@ for i in range(numSystems):
         # EbbNFlow System has unique parameters for it, so parsing for the more information
         print 'Creating EbbNFlow System'
         try:
-            onTime = Config.get(sectionString, 'onTime')
+            onTime = float(Config.get(sectionString, 'onTime'))
             print "System will be Off This Much Time per Hour (minutes): %d" % (int(onTime))  # TO Fix
-            offTime = Config.get(sectionString, 'offTime')
+            offTime = float(Config.get(sectionString, 'offTime'))
             print "System will be Off This Much Time per Hour (minutes): %d" % (int(offTime))  # TO Fix
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
