@@ -76,7 +76,7 @@ class slack:
         if self.slack_client.rtm_connect():
             print("Raspibot connected and running!")
             while True:
-                command, channel = self.parse_slack_output(self.slack_client.rtm_read(), self)
+                command, channel = self.parse_slack_output(self.slack_client.rtm_read())
                 if command and channel:
                     self.handle_command(command, channel)
                 time.sleep(READ_WEBSOCKET_DELAY)
