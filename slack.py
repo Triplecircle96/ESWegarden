@@ -17,7 +17,7 @@ class slack:
         print('bot id for debug')
         print self.BOT_ID
         # self.BOT_ID = 'U39V3838T'
-        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-DBBR8aU72RKBujelg7PJZzzx'
+        self.SLACK_BOT_TOKEN = 'xoxb-111989275299-EpktvTkmEXgnJgg1EsyLp16T'
 
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
@@ -74,7 +74,7 @@ class slack:
     def instantiateSlack(self):
         READ_WEBSOCKET_DELAY = 1  # 1 second delay between reading from firehose
         if self.slack_client.rtm_connect():
-            print("StarterBot connected and running!")
+            print("Raspibot connected and running!")
             while True:
                 command, channel = self.parse_slack_output(self.slack_client.rtm_read(), self)
                 if command and channel:
