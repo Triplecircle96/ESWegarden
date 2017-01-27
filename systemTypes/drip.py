@@ -28,8 +28,12 @@ class drip(system):
         # Timing code
         if not self.is_running:
             self.is_running = True
-            self.sensor.event2.wait(self.onTime)
-            if self.sensor.event2.isSet():
+            self.sensor.event1.wait(self.onTime)
+            if self.sensor.event1.isSet():
+                # Water level goes low
+                self.deactivateSystem()
+            else:
+                # No problems
                 self.waitSystem()
 
     def waitSystem(self):
@@ -48,7 +52,7 @@ class drip(system):
         self.alive = False
         GPIO.output(self.motorPin, 0)
         self.is_running = False
-        self.sensor.event1.wait()
+        self.sensor.event2.wait()
         self.runSystem()
 
     def diagnostic(self):
