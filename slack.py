@@ -1,5 +1,5 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-9Lf1UQyDoEfU0VlbB04SNDWn'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-omfq3K5hefA0Hp76GiYnJkBI'
 
 import time
 import threading
@@ -60,9 +60,9 @@ class slack:
             this parsing function returns None unless a message is
             directed at the Bot, based on its ID.
         """
-        output_list = slack_rtm_output
-        if output_list and len(output_list) > 0:
-            for output in output_list:
+        self.output_list = slack_rtm_output
+        if self.output_list and len(self.output_list) > 0:
+            for output in self.output_list:
                 if output and 'text' in output and self.AT_BOT in output['text']:
                     # return text after the @ mention, whitespace removed
                     return output['text'].split(self.AT_BOT)[1].strip().lower(), \
