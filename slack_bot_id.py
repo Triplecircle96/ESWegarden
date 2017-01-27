@@ -3,7 +3,7 @@ SLACK_BOT_TOKEN = 'xoxb-111989275299-h3J8ZCGYsAWIGT0lnYIk3O9Z'
 import os
 from slackclient import SlackClient
 
-BOT_NAME = 'raspibot'
+BOT_NAME = '@raspibot'
 
 slack_client = SlackClient(SLACK_BOT_TOKEN)
 
@@ -12,7 +12,6 @@ if __name__ == "__main__":
     if api_call.get('ok'):
         # retrieve all users so we can find our bot
         users = api_call.get('members')
-        print(users)
         for user in users:
             if 'name' in user and user.get('name') == BOT_NAME:
                 print("Bot ID for '" + user['name'] + "' is " + user.get('id'))
