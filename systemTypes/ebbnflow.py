@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 import datetime
 import threading
-from threading import Timer
 from eGardenPackage.systemSensors import *
 
 class ebbnflow(system):
