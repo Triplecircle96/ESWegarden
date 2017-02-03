@@ -31,7 +31,6 @@ class ebbnflow(system.system):
             self.is_running = True
             self.sensor.event1.wait(self.onTime)
             if self.sensor.event1.isSet():
-                print("Water is low")
                 # Water level goes low
                 self.deactivateSystem()
             else:
@@ -45,7 +44,6 @@ class ebbnflow(system.system):
             self.is_running = False
             self.sensor.event1.wait(self.offTime)
             if self.sensor.event1.isSet():
-                print("Water is High")
                 self.deactivateSystem()
 
     def deactivateSystem(self):
