@@ -28,10 +28,10 @@ class NFT(system.system):
         self.runSystem()
         while True:
             if not self.sensor.event1.isSet():
-                self.sensor.event1.wait()
+                self.sensor.event1.wait() # Water Level is Low
                 self.deactivateSystem()
             else:
-                self.sensor.event2.wait()
+                self.sensor.event2.wait() # Water Level is High
                 self.reactivateSystem()
 
     def runSystem(self):

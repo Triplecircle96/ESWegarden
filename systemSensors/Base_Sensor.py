@@ -16,3 +16,6 @@ class Base_Sensor(object):
 
     def read_data(self):
         raise NotImplementedError()
+        
+	def checkWater(self):
+		raise NotImplementedError()

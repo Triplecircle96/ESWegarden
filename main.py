@@ -41,7 +41,7 @@ for i in range(numSystems):
         print 'Creating Drip System'
         try:
             onTime = Config.get(sectionString, 'onTime')
-            print "System will be On This Much Time per Hour (minutes): %d" % (int(onTime))  # TO Fix
+            print "System will be On This Much Time per Hour (seconds): %d" % (int(onTime))  # TO Fix
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
         # x = Drip(pumpPin, waterLevelPin, onTime)
@@ -51,9 +51,9 @@ for i in range(numSystems):
         print 'Creating EbbNFlow System'
         try:
             onTime = float(Config.get(sectionString, 'onTime'))
-            print "System will be Off This Much Time per Hour (minutes): %d" % (int(onTime))  # TO Fix
+            print "System will be Off This Much Time per Hour (seconds): %d" % (int(onTime))  # TO Fix
             offTime = float(Config.get(sectionString, 'offTime'))
-            print "System will be Off This Much Time per Hour (minutes): %d" % (int(offTime))  # TO Fix
+            print "System will be Off This Much Time per Hour (seconds): %d" % (int(offTime))  # TO Fix
         except:
             print 'Bad Naming of Drip System Timer in Config File, Continuing Haphazardly'
         x = ebbnflow.ebbnflow(pumpPin, waterLevelPin, onTime, offTime)
