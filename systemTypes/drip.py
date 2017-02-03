@@ -19,7 +19,8 @@ class drip(system):
         self.sensor = Float_Switch(self.SensorPin)
 
     def instantiateSystem(self):
-        self.runSystem()
+        while(True):
+            self.runSystem()
 
     def runSystem(self):
         # Turn on the Motor
@@ -30,6 +31,7 @@ class drip(system):
             self.is_running = True
             self.sensor.event1.wait(self.onTime)
             if self.sensor.event1.isSet():
+                print("Water is low")
                 # Water level goes low
                 self.deactivateSystem()
             else:
@@ -43,9 +45,8 @@ class drip(system):
             self.is_running = False
             self.sensor.event1.wait(self.offTime)
             if self.sensor.event1.isSet():
+                print("Water is High")
                 self.deactivateSystem()
-            else:
-                self.runSystem()
 
     def deactivateSystem(self):
         # Turn Off Motor
@@ -53,6 +54,8 @@ class drip(system):
         GPIO.output(self.motorPin, 0)
         self.is_running = False
         self.sensor.event2.wait()
+
+    def reactivateSystem(self):
         self.runSystem()
 
     def diagnostic(self):

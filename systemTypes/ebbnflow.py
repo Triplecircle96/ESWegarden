@@ -19,7 +19,8 @@ class ebbnflow(system.system):
         self.sensor = Float_Switch.Float_Switch(self.SensorPin)
 
     def instantiateSystem(self):
-        self.runSystem()
+        while(True):
+            self.runSystem()
 
     def runSystem(self):
         # Turn on the Motor
@@ -46,8 +47,6 @@ class ebbnflow(system.system):
             if self.sensor.event1.isSet():
                 print("Water is High")
                 self.deactivateSystem()
-            else:
-                self.runSystem()
 
     def deactivateSystem(self):
         # Turn Off Motor
@@ -55,7 +54,6 @@ class ebbnflow(system.system):
         GPIO.output(self.motorPin, 0)
         self.is_running = False
         self.sensor.event2.wait()
-        self.runSystem()
 
     def reactivateSystem(self):
         self.runSystem()
