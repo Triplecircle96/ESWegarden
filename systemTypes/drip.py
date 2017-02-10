@@ -1,9 +1,10 @@
 import RPi.GPIO as GPIO
 import datetime
 import threading
-from eGardenPackage.systemSensors import *
+from systemSensors import Float_Switch
+import system
 
-class drip(system):
+class drip(system.system):
     def __init__(self, motorPin, sensorPin, onTime, offTime):
         self.motorPin = motorPin
         self.SensorPin = sensorPin
@@ -16,7 +17,7 @@ class drip(system):
         self.is_running = False
         # Setup GPIO Pin Mode
         GPIO.setup(self.motorPin, GPIO.OUT)
-        self.sensor = Float_Switch(self.SensorPin)
+        self.sensor = Float_Switch.Float_Switch(self.SensorPin)
 
     def instantiateSystem(self):
         while(True):
@@ -31,7 +32,6 @@ class drip(system):
             self.is_running = True
             self.sensor.event1.wait(self.onTime)
             if self.sensor.event1.isSet():
-                print("Water is low")
                 # Water level goes low
                 self.deactivateSystem()
             else:
@@ -45,7 +45,6 @@ class drip(system):
             self.is_running = False
             self.sensor.event1.wait(self.offTime)
             if self.sensor.event1.isSet():
-                print("Water is High")
                 self.deactivateSystem()
 
     def deactivateSystem(self):

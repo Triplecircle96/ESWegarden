@@ -25,6 +25,10 @@ Functionality:
 	- Alerts users when system needs maintanence
 	- Logging Data for Later Review
 
+Known Bugs:
+	- 
+
+
 
 Future Goals: 
 	- Implementing a UI to interact with system remotely
