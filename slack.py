@@ -49,6 +49,9 @@ class slack:
                    "* command with numbers, delimited by spaces."
         if command.startswith('status'):
             response = "I will get the status of the systems for you!"
+        
+        if command.startswith('nutrients'):
+            response = "The last time compost tea was added was..." #eventually we could record when compost tea is added/needed
 
         if command.startswith('take a picture'):
             image_url = "http://zdnet4.cbsistatic.com/hub/i/2015/02/15/854dfd8d-bee3-41c1-a68b-d8554efcef85/0dc5a553715e4f5f620505bd62228155/raspi-logo.png"
