@@ -1,5 +1,5 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-6wZFXfvMfP0C9h9qotuLjPzg'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-29C11XU73FA297ZdKAEd7MTT'
 
 import time
 import threading
@@ -50,8 +50,15 @@ class slack:
         if command.startswith('status'):
             response = "I will get the status of the systems for you!"
 
+        if command.startswith('take a picture'):
+            image_url = "http://zdnet4.cbsistatic.com/hub/i/2015/02/15/854dfd8d-bee3-41c1-a68b-d8554efcef85/0dc5a553715e4f5f620505bd62228155/raspi-logo.png"
+            attachments = [{"title": "testImage", "image_url": image_url}]
+            self.slack_client.api_call("chat.postMessage", channel=channel, text='postMessage test',
+                        attachments = attachments)
+            response = "Here is the image"
+
         self.slack_client.api_call("chat.postMessage", channel=channel,
-                              text=response, as_user=True)
+                        text=response, as_user=True)
 
     def parse_slack_output(self, slack_rtm_output):
         """
