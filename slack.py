@@ -1,5 +1,5 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-H5paNDYL2FXDPgMu0ODDhek3'
+SLACK_BOT_TOKEN = 'xoxb-111989275299-VI8glhi24t2S0NWegtdSN71N'
 
 import time
 import threading
@@ -19,7 +19,7 @@ class slack:
         print self.BOT_ID
         # self.BOT_ID = 'U39V3838T'
         self.SLACK_BOT_TOKEN = SLACK_BOT_TOKEN
-
+        self.output_list = 0
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
         self.EXAMPLE_COMMAND = "do"
@@ -39,7 +39,7 @@ class slack:
         else:
             print("could not find bot user with the name " + BOT_NAME)
 
-    def handle_command(command, channel, self):
+    def handle_command(self, command, channel):
         """
             Receives commands directed at the bot and determines if they
             are valid commands. If so, then acts on the commands. If not,
@@ -53,16 +53,15 @@ class slack:
         self.slack_client.api_call("chat.postMessage", channel=channel,
                               text=response, as_user=True)
 
-
-    def parse_slack_output(slack_rtm_output, self):
+    def parse_slack_output(self, slack_rtm_output):
         """
             The Slack Real Time Messaging API is an events firehose.
             this parsing function returns None unless a message is
             directed at the Bot, based on its ID.
         """
-        self.output_list = slack_rtm_output
-        if self.output_list and len(self.output_list) > 0:
-            for output in self.output_list:
+        output_list = slack_rtm_output
+        if output_list and len(output_list) > 0:
+            for output in output_list:
                 if output and 'text' in output and self.AT_BOT in output['text']:
                     # return text after the @ mention, whitespace removed
                     return output['text'].split(self.AT_BOT)[1].strip().lower(), \
