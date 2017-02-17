@@ -49,6 +49,9 @@ class slack:
                    "* command with numbers, delimited by spaces."
         if command.startswith('status'):
             response = "I will get the status of the systems for you!"
+        
+        if command.startswith('nutrients'):
+            response = "The last time compost tea was added was..." #eventually we could record when compost tea is added/needed
 
         self.slack_client.api_call("chat.postMessage", channel=channel,
                               text=response, as_user=True)
