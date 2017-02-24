@@ -1,11 +1,9 @@
-SLACK_BOT_TOKEN = 'xoxb-111989275299-dVEkPRyawpyNWYamtKPA8mSa'
-
 import os
 from slackclient import SlackClient
 
 BOT_NAME = 'raspibot'
 
-slack_client = SlackClient(SLACK_BOT_TOKEN)
+slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
 if __name__ == "__main__":
     api_call = slack_client.api_call("users.list")

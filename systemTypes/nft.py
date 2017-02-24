@@ -39,12 +39,12 @@ class NFT(system.system):
             print("Running NFT System")
         if self.alive:
             # Turn on the Motor
-            GPIO.output(self.motorPin,1)
+            GPIO.output(self.motorPin,0)
             if (self.debug):
                 print("Running NFT System : Turning ON Motor")
             # Instantiate Sensor
         else:
-            GPIO.output(self.motorPin,0)
+            GPIO.output(self.motorPin,1)
             if (self.debug):
                 print("Running NFT System : Turning OFF Motor")
 
