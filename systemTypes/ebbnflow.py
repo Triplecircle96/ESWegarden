@@ -58,6 +58,12 @@ class ebbnflow(system.system):
 
     def diagnostic(self):
         # Prints system information for user
-        print 'Time Started: ' + self.startTime + '\n'
-        print 'Motor Pin Used: ' + self.motorPin + '\n'
-        print 'Water Level Pin Used: ' + self.SensorPin + '\n'
+        active = 'On' if self.is_running else 'Off'
+        alive = 'Live' if self.alive else 'Dead'
+        status = ('System Type: NFT\n' +
+                  'Time Started: ' + self.startTime + '\n' +
+                  'Motor State: ' + active + '\n' +
+                  'System State: ' + alive + '\n' +
+                  'Motor Pin Used: ' + self.motorPin + '\n' +
+                  'Water Level Pin Used: ' + self.SensorPin + '\n')
+        return status

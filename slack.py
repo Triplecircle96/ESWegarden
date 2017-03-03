@@ -1,5 +1,5 @@
 BOT_NAME = 'raspibot'
-SLACK_BOT_TOKEN = 'xoxb-111989275299-29C11XU73FA297ZdKAEd7MTT'
+#SLACK_BOT_TOKEN = 'xoxb-111989275299-29C11XU73FA297ZdKAEd7MTT'
 
 import time
 import threading
@@ -16,8 +16,9 @@ class slack:
         # ESW Slackbot's ID Values
 
         # instantiate Slack Client
-        self.slack_client = SlackClient(SLACK_BOT_TOKEN)
+        slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
+        # Make BOT_ID env variable
         self.BOT_ID = self.botIDfinder()
         print type(self.BOT_ID)
         print('bot id for debug')
@@ -27,22 +28,11 @@ class slack:
         self.output_list = 0
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
-        self.EXAMPLE_COMMAND = "do"
+        self.EXAMPLE_COMMAND = "do"slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
         l = threading.Thread(target=self.instantiateSlack)
         l.start()
 
-    def updateSystemThreads(self, threadsList):
-        self.systemThreads = threadsList
-        print("Thread Manager Thread List Updated")
-        
-    def getStatus(self):
-        statuses = ""
-        for sys in self.systemThreads
-            statuses = statuses + sys.diagnostic()
-        return statuses
-        #print("example of status")
-    
     def botIDfinder(self):
         api_call = self.slack_client.api_call("users.list")
         if api_call.get('ok'):
@@ -55,6 +45,18 @@ class slack:
         else:
             print("could not find bot user with the name " + BOT_NAME)
 
+
+    def updateSystemThreads(self, threadsList):
+        self.systemThreads = threadsList
+        print("Thread Manager Thread List Updated")
+        
+    def getStatus(self):
+        statuses = ""
+        for sys in self.systemThreads
+            statuses = statuses + sys.diagnostic() + '\n'
+        return statuses
+        #print("example of status")
+    
     def handle_command(self, command, channel):
         """
             Receives commands directed at the bot and determines if they
@@ -63,13 +65,15 @@ class slack:
         """
         response = "Not sure what you mean. Use the *" + self.EXAMPLE_COMMAND + \
                    "* command with numbers, delimited by spaces."
+        command = command.lower()
         if command.startswith('status'):
-            response = "I will get the status of the systems for you!"
+            response = ("I will get the status of the systems for you!:\n" +
+                        self.getStatus())
         
-        if command.startswith('nutrients'):
+        elif command.startswith('nutrients'):
             response = "The last time compost tea was added was..." #eventually we could record when compost tea is added/needed
 
-        if command.startswith('take a picture'):
+        elif command.startswith('take a picture'):
             image_url = "http://zdnet4.cbsistatic.com/hub/i/2015/02/15/854dfd8d-bee3-41c1-a68b-d8554efcef85/0dc5a553715e4f5f620505bd62228155/raspi-logo.png"
             attachments = [{"title": "testImage", "image_url": image_url}]
             self.slack_client.api_call("chat.postMessage", channel=channel, text='postMessage test',
