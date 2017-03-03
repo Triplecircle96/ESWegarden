@@ -6,11 +6,13 @@ from slack import slack
 from systemTypes import nft
 from systemTypes import drip
 from systemTypes import ebbnflow
+from threadController import  threadController
 
 Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
 systems = []
 
+# threadManager = threadController()
 # slackIntegration = slack()
 
 numSystems = len(Config.sections())
