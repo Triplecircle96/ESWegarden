@@ -4,9 +4,14 @@ SLACK_BOT_TOKEN = 'xoxb-111989275299-29C11XU73FA297ZdKAEd7MTT'
 import time
 import threading
 from slackclient import SlackClient
+from systemTypes import nft
+from systemTypes import drip
+from systemTypes import ebbnflow
 
 class slack:
     def __init__(self):
+        self.systemThreads = []
+
         print("Starting to Create Slack Bot")
         # ESW Slackbot's ID Values
 
@@ -27,6 +32,17 @@ class slack:
         l = threading.Thread(target=self.instantiateSlack)
         l.start()
 
+    def updateSystemThreads(self, threadsList):
+        self.systemThreads = threadsList
+        print("Thread Manager Thread List Updated")
+        
+    def getStatus(self):
+        statuses = ""
+        for sys in self.systemThreads
+            statuses = statuses + sys.diagnostic()
+        return statuses
+        #print("example of status")
+    
     def botIDfinder(self):
         api_call = self.slack_client.api_call("users.list")
         if api_call.get('ok'):

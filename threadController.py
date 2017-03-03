@@ -24,4 +24,8 @@ class threadController:
 
     # Example Command Method Here
     def getStatus(self):
-        print("example of status")
+        statuses = ""
+        for sys in self.systemThreads
+            statuses = statuses + sys.diagnostic()
+        return statuses
+        #print("example of status")
