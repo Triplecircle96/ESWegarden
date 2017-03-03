@@ -10,4 +10,18 @@ from systemTypes import ebbnflow
 
 class threadController:
     def __init__(self):
-        print("System Thread Manager Created")
+        print("Thread Manager Created")
+        self.systemThreads = []
+        self.slack = 0
+
+    def updateSystemThreads(self, threadsList):
+        self.systemThreads = threadsList
+        print("Thread Manager Thread List Updated")
+
+    def updateSlackLink(self, slackObj):
+        self.slack = slackObj
+        print("Slack Linkage Updated in Thread Manager")
+
+    # Example Command Method Here
+    def getStatus(self):
+        print("example of status")
