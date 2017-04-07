@@ -1,8 +1,8 @@
 BOT_NAME = 'raspibot'
-#SLACK_BOT_TOKEN = 'xoxb-111989275299-29C11XU73FA297ZdKAEd7MTT'
 
 import time
 import threading
+import os
 from slackclient import SlackClient
 from systemTypes import nft
 from systemTypes import drip
@@ -14,22 +14,17 @@ class slack:
 
         print("Starting to Create Slack Bot")
         # ESW Slackbot's ID Values
-
-        # instantiate Slack Client
-        slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
-
-        # Make BOT_ID env variable
-        self.BOT_ID = self.botIDfinder()
+        
+        self.BOT_ID = os.environ.get("BOT_ID")
         print type(self.BOT_ID)
         print('bot id for debug')
         print self.BOT_ID
-        # self.BOT_ID = 'U39V3838T'
-        self.SLACK_BOT_TOKEN = SLACK_BOT_TOKEN
+
+        # self.SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
         self.output_list = 0
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
-        self.EXAMPLE_COMMAND = "do"slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
-
+        self.EXAMPLE_COMMAND = "do"
         l = threading.Thread(target=self.instantiateSlack)
         l.start()
 
@@ -52,7 +47,7 @@ class slack:
         
     def getStatus(self):
         statuses = ""
-        for sys in self.systemThreads
+        for sys in self.systemThreads:
             statuses = statuses + sys.diagnostic() + '\n'
         return statuses
         #print("example of status")
@@ -99,7 +94,7 @@ class slack:
         return None, None
 
     def instantiateSlack(self):
-        READ_WEBSOCKET_DELAY = 1  # 1 second delay between reading from firehose
+        READ_WEBSOCKET_DELAY = 1
         if self.slack_client.rtm_connect():
             print("Raspibot connected and running!")
             while True:

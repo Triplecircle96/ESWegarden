@@ -12,8 +12,8 @@ Config = ConfigParser.ConfigParser()
 Config.read('config.ini')
 systems = []
 
-# threadManager = threadController()
-# slackIntegration = slack()
+threadManager = threadController()
+slackIntegration = slack()
 
 numSystems = len(Config.sections())
 systemThreads = []

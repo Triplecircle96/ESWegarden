@@ -10,7 +10,7 @@ class NFT(system.system):
         self.debug = True
         self.motorPin = motorPin
         self.SensorPin = sensorPin
-        self.startTimereturn statuses = datetime.datetime.now().time().isoformat()
+        self.startTime = datetime.datetime.now().time().isoformat()
         self.alive = True
         # Setup GPIO Pin Mode
         GPIO.setmode(GPIO.BCM)
@@ -73,4 +73,3 @@ class NFT(system.system):
                   'Motor Pin Used: ' + self.motorPin + '\n' +
                   'Water Level Pin Used: ' + self.SensorPin + '\n')
         return status
-)
