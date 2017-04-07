@@ -20,7 +20,8 @@ class slack:
         print('bot id for debug')
         print self.BOT_ID
 
-        # self.SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
+        self.SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
+        self.slack_client = SlackClient(self.SLACK_BOT_TOKEN)
         self.output_list = 0
         # constants
         self.AT_BOT = "<@" + self.BOT_ID + ">"
